@@ -1795,9 +1795,9 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
 
-  /**
+/**
    * Monitor Trinamic drivers for error conditions,
    * like overtemperature and short to ground.
    * In the case of overtemperature Marlin can decrease the driver current until error condition clears.
@@ -1808,7 +1808,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -1816,14 +1816,14 @@
     #define STOP_ON_ERROR
   #endif
 
-  /**
+/**
    * TMC2130, TMC2160, TMC2208, TMC2209, TMC5130 and TMC5160 only
    * The driver will switch to spreadCycle when stepper speed is over HYBRID_THRESHOLD.
    * This mode allows for faster movements at the expense of higher noise levels.
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
   #define X_HYBRID_THRESHOLD     100  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
@@ -1879,9 +1879,9 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  #define TMC_DEBUG
+#define TMC_DEBUG
 
-  /**
+/**
    * You can set your own advanced settings by filling in predefined functions.
    * A list of available functions can be found on the library github page
    * https://github.com/teemuatlut/TMCStepper
@@ -1892,7 +1892,7 @@
    *   stepperY.interpolate(0); \
    * }
    */
-  #define TMC_ADV() {  }
+#define TMC_ADV() {  }
 
 #endif // HAS_TRINAMIC
 
@@ -2019,7 +2019,7 @@
     #define E5_CHAIN_POS         0
   #endif
 
-  /**
+/**
    * Monitor L6470 drivers for error conditions like over temperature and over current.
    * In the case of over temperature Marlin can decrease the drive until the error condition clears.
    * Other detected conditions can be used to stop the current print.
@@ -2035,7 +2035,7 @@
    * M918 - Increase speed until max or error
    * M122 S0/1 - Report driver parameters
    */
-  //#define MONITOR_L6470_DRIVER_STATUS
+//#define MONITOR_L6470_DRIVER_STATUS
 
   #if ENABLED(MONITOR_L6470_DRIVER_STATUS)
     #define KVAL_HOLD_STEP_DOWN     1
@@ -2086,24 +2086,24 @@
  */
 //#define PHOTO_GCODE
 #if ENABLED(PHOTO_GCODE)
-  // A position to move to (and raise Z) before taking the photo
-  //#define PHOTO_POSITION { X_MAX_POS - 5, Y_MAX_POS, 0 }  // { xpos, ypos, zraise } (M240 X Y Z)
-  //#define PHOTO_DELAY_MS   100                            // (ms) Duration to pause before moving back (M240 P)
-  //#define PHOTO_RETRACT_MM   6.5                          // (mm) E retract/recover for the photo move (M240 R S)
+// A position to move to (and raise Z) before taking the photo
+//#define PHOTO_POSITION { X_MAX_POS - 5, Y_MAX_POS, 0 }  // { xpos, ypos, zraise } (M240 X Y Z)
+//#define PHOTO_DELAY_MS   100                            // (ms) Duration to pause before moving back (M240 P)
+//#define PHOTO_RETRACT_MM   6.5                          // (mm) E retract/recover for the photo move (M240 R S)
 
-  // Canon RC-1 or homebrew digital camera trigger
-  // Data from: http://www.doc-diy.net/photo/rc-1_hacked/
-  //#define PHOTOGRAPH_PIN 23
+// Canon RC-1 or homebrew digital camera trigger
+// Data from: http://www.doc-diy.net/photo/rc-1_hacked/
+//#define PHOTOGRAPH_PIN 23
 
-  // Canon Hack Development Kit
-  // http://captain-slow.dk/2014/03/09/3d-printing-timelapses/
-  //#define CHDK_PIN        4
+// Canon Hack Development Kit
+// http://captain-slow.dk/2014/03/09/3d-printing-timelapses/
+//#define CHDK_PIN        4
 
-  // Optional second move with delay to trigger the camera shutter
-  //#define PHOTO_SWITCH_POSITION { X_MAX_POS, Y_MAX_POS }  // { xpos, ypos } (M240 I J)
+// Optional second move with delay to trigger the camera shutter
+//#define PHOTO_SWITCH_POSITION { X_MAX_POS, Y_MAX_POS }  // { xpos, ypos } (M240 I J)
 
-  // Duration to hold the switch or keep CHDK_PIN high
-  //#define PHOTO_SWITCH_MS   50 // (ms) (M240 D)
+// Duration to hold the switch or keep CHDK_PIN high
+//#define PHOTO_SWITCH_MS   50 // (ms) (M240 D)
 #endif
 
 /**
@@ -2227,14 +2227,14 @@
 //#define NO_VOLUMETRICS
 
 #if DISABLED(NO_VOLUMETRICS)
-  /**
+/**
    * Volumetric extrusion default state
    * Activate to make volumetric extrusion the default method,
    * with DEFAULT_NOMINAL_FILAMENT_DIA as the default diameter.
    *
    * M200 D0 to disable, M200 Dn to set a new diameter.
    */
-  //#define VOLUMETRIC_DEFAULT_ON
+//#define VOLUMETRIC_DEFAULT_ON
 #endif
 
 /**
@@ -2272,7 +2272,7 @@
 // Enable and set a (default) feedrate for all G0 moves
 //#define G0_FEEDRATE 3000 // (mm/m)
 #ifdef G0_FEEDRATE
-  //#define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
+//#define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
 #endif
 
 /**
@@ -2281,7 +2281,7 @@
  * Add G-codes M810-M819 to define and run G-code macros.
  * Macros are not saved to EEPROM.
  */
-//#define GCODE_MACROS
+#define GCODE_MACROS
 #if ENABLED(GCODE_MACROS)
   #define GCODE_MACROS_SLOTS       5  // Up to 10 may be used
   #define GCODE_MACROS_SLOT_SIZE  50  // Maximum length of a single macro
@@ -2292,25 +2292,25 @@
  */
 //#define CUSTOM_USER_MENUS
 #if ENABLED(CUSTOM_USER_MENUS)
-  //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
-  #define USER_SCRIPT_DONE "M117 User Script Done"
-  #define USER_SCRIPT_AUDIBLE_FEEDBACK
-  //#define USER_SCRIPT_RETURN  // Return to status screen after a script
+//#define CUSTOM_USER_MENU_TITLE "Custom Commands"
+#define USER_SCRIPT_DONE "M117 User Script Done"
+#define USER_SCRIPT_AUDIBLE_FEEDBACK
+//#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
-  #define USER_DESC_1 "Home & UBL Info"
-  #define USER_GCODE_1 "G28\nG29 W"
+#define USER_DESC_1 "Home & UBL Info"
+#define USER_GCODE_1 "G28\nG29 W"
 
-  #define USER_DESC_2 "Preheat for " PREHEAT_1_LABEL
-  #define USER_GCODE_2 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
+#define USER_DESC_2 "Preheat for " PREHEAT_1_LABEL
+#define USER_GCODE_2 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
 
-  #define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
-  #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
+#define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
+#define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
-  #define USER_DESC_4 "Heat Bed/Home/Level"
-  #define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
+#define USER_DESC_4 "Heat Bed/Home/Level"
+#define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
 
-  #define USER_DESC_5 "Home & Info"
-  #define USER_GCODE_5 "G28\nM503"
+#define USER_DESC_5 "Home & Info"
+#define USER_GCODE_5 "G28\nM503"
 #endif
 
 /**
@@ -2329,7 +2329,7 @@
  */
 //#define HOST_ACTION_COMMANDS
 #if ENABLED(HOST_ACTION_COMMANDS)
-  //#define HOST_PROMPT_SUPPORT
+//#define HOST_PROMPT_SUPPORT
 #endif
 
 //===========================================================================
